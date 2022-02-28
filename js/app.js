@@ -32,6 +32,7 @@ const displayPhone = phones =>{
                 <div class="card-body">
                   <h5 class="card-title">${phone.phone_name}</h5>
                   <p>${phone.brand}</p>
+                  <button onclick="loadPhoeDetails('${phone.slug}')" class="btn btn-primary">Details</button>
                 </div>
               </div>
     `
@@ -39,3 +40,15 @@ const displayPhone = phones =>{
     })
 
 }
+const loadPhoeDetails = slug =>{
+    console.log(slug);
+    const url = `https://openapi.programming-hero.com/api/phone/${slug}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data.data))
+
+}
+
+// const displayPhoneDetails = details =>{
+
+// }
