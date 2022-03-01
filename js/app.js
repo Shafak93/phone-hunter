@@ -22,25 +22,32 @@ const displayPhone = phones =>{
     console.log(phones);
     const phoneCardDiv = document.getElementById('phone-card');
     phoneCardDiv.textContent = ''
-    /* if(phones.length == 0 || phones == null || phones == undefined){
-        return 'No results found'
-    } */
+    if(phones.length == 0 ){
+        const errorMessage = document.getElementById('no-search');
+        errorMessage.innerHTML =`
+        <h3 class="text-center text-danger"> No results found</h3>
+        `
+    }else{
+        const errorMessage = document.getElementById('no-search');
+        errorMessage.textContent = ''
+        phones.forEach(phone =>{
+            const div = document.createElement('div');
+            div.classList.add('col');
+        div.innerHTML = `
+                <div class="card p-4">
+                    <img src="${phone.image}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">${phone.phone_name}</h5>
+                      <p>${phone.brand}</p>
+                      <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary">Details</button>
+                    </div>
+                  </div>
+        `
+        phoneCardDiv.appendChild(div);
+        })
+    }
     
-    phones.forEach(phone =>{
-        const div = document.createElement('div');
-        div.classList.add('col');
-    div.innerHTML = `
-            <div class="card p-4">
-                <img src="${phone.image}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">${phone.phone_name}</h5>
-                  <p>${phone.brand}</p>
-                  <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary">Details</button>
-                </div>
-              </div>
-    `
-    phoneCardDiv.appendChild(div);
-    })
+    
 
 }
 const loadPhoneDetails = slug =>{
@@ -108,22 +115,10 @@ const displayPhoneDetails = details =>{
                         
                         <dt class="col-sm-3 text-truncate">WLAN</dt>
                         <dd class="col-sm-9">${details.others == undefined ? 'no WLAN info found' : details.others.WLAN}</dd>
-                    
-                    
                         </dl>
                     </div>
                   </div>
-            
-    `
-    
-    
-  /*   `
-    <img src="${details.image}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">${details.name}</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    `; */
+                  `
     cardDetailDiv.appendChild(div);
 
 }
