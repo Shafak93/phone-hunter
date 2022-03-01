@@ -22,6 +22,9 @@ const displayPhone = phones =>{
     console.log(phones);
     const phoneCardDiv = document.getElementById('phone-card');
     phoneCardDiv.textContent = ''
+    /* if(phones.length == 0 || phones == null || phones == undefined){
+        return 'No results found'
+    } */
     
     phones.forEach(phone =>{
         const div = document.createElement('div');
@@ -58,11 +61,6 @@ const displayPhoneDetails = details =>{
     div.classList.add('row')
     const releaseDate = details.releaseDate == ''? 'No release date found' : details.releaseDate;
     const bluetooth = details.others == undefined ? 'no bluetooth info found' : details.others.Bluetooth
-     /* const mainFeature =para =>{
-        for(const features in para){
-            `${features} += ${para[features]}`
-        }
-     }  */
     div.innerHTML =`
                   <div class="col-md-3">
                     <img src="${details.image}" class="img-fluid rounded-center w-100" alt="...">
