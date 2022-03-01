@@ -5,6 +5,9 @@ body{
     background-color: #ECECEC;
     font-family: 'Poppins', sans-serif;
 }
+/* details card */
 #card-detail{
-    background-color: #FAEEE0;
+    /* background-color: #FAEEE0; */
+    background-color: #dacfca;
+    border-radius: 10px;
 }
