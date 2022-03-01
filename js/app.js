@@ -34,9 +34,9 @@ const displayPhone = phones =>{
             const div = document.createElement('div');
             div.classList.add('col');
         div.innerHTML = `
-                <div class="card p-4">
+                <div class="card p-4 rounded">
                     <img src="${phone.image}" class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                       <h5 class="card-title">${phone.phone_name}</h5>
                       <p>${phone.brand}</p>
                       <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary">Details</button>
@@ -71,11 +71,13 @@ const displayPhoneDetails = details =>{
     div.innerHTML =`
                   <div class="col-md-3">
                     <img src="${details.image}" class="img-fluid rounded-center w-100" alt="...">
+                    <div class='text-center mt-3'>
+                        <h5 class="card-title fw-bolder">${details.brand}</h5>
+                        <h6 class="card-title fw-bolder">${details.name}</h6>
+                    </div>
                   </div>
                   <div class="col-md-9">
                     <div class="card-body">
-                      <h5 class="card-title fw-bolder">${details.brand}</h5>
-                      <h6 class="card-title fw-bolder">${details.name}</h6>
                       <dl class="row">
                         <dt class="col-sm-3">
                         Release date</dt>
