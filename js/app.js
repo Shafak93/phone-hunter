@@ -22,6 +22,9 @@ const searchPhone = () =>{
 const displayPhone = phones =>{
     const phoneCardDiv = document.getElementById('phone-card');
     phoneCardDiv.textContent = ''
+    //details card remove for new search
+    const cardDetails = document.getElementById('card-detail');
+    cardDetails.textContent = ''
     if(phones.length == 0 ){
         const errorMessage = document.getElementById('no-search');
         errorMessage.innerHTML =`
@@ -49,9 +52,6 @@ const displayPhone = phones =>{
         phoneCardDiv.appendChild(div);
         })
     }
-    
-    
-
 }
 //Button details Data load
 const loadPhoneDetails = slug =>{
@@ -71,14 +71,14 @@ const displayPhoneDetails = details =>{
     const releaseDate = details.releaseDate == ''? 'No release date found' : details.releaseDate;
     const bluetooth = details.others == undefined ? 'no bluetooth info found' : details.others.Bluetooth
     div.innerHTML =`
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <img src="${details.image}" class="img-fluid rounded-center w-100" alt="...">
                     <div class='text-center text-md-center mt-3'>
                         <h5 class="card-title fw-bolder">${details.brand}</h5>
                         <h6 class="card-title fw-bolder">${details.name}</h6>
                     </div>
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-8">
                     <div class="card-body">
                       <dl class="row text-wrap">
                         <dt class="col-sm-3">
